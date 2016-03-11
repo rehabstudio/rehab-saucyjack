@@ -4,7 +4,7 @@
   "description": "Scroll position detection & triggering module",
   "main": "index.js",
   "scripts": {
-    "compile": "./node_modules/.bin/babel ./src/saucy-jack.js -o ./dist/build.js --source-maps && ./node_modules/.bin/uglifyjs ./dist/build.js -o ./dist/build.min.js -c -m",
+    "compile": "./node_modules/.bin/jshint ./src/saucy-jack.js && ./node_modules/.bin/jscs ./src/saucy-jack.js && ./node_modules/.bin/babel ./src/saucy-jack.js -o ./dist/build.js --source-maps && ./node_modules/.bin/uglifyjs ./dist/build.js -o ./dist/build.min.js -c -m",
     "compile-example": "./node_modules/.bin/browserify ./example/scripts/src/main.js -o ./example/scripts/build/build.js",
     "compile-all": "npm run compile && npm run compile-example",
     "test": "./node_modules/.bin/karma start karma.conf.js"
@@ -20,6 +20,8 @@
     "chai": "^3.5.0",
     "isparta": "^4.0.0",
     "isparta-loader": "^2.0.0",
+    "jscs": "^2.11.0",
+    "jshint": "^2.9.1",
     "karma": "^0.13.22",
     "karma-chai": "^0.1.0",
     "karma-coverage": "^0.5.5",
