@@ -4,7 +4,7 @@ SaucyJack
 What is it?
 -----------
 
-SaucyJack is a scroll position detection & triggering module.
+SaucyJack is a scroll position detection & triggering module. Example available to view [here](http://rehabstudio.github.io/rehab-saucyjack/).
 
 Usage
 -----
