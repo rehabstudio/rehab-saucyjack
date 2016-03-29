@@ -1,9 +1,101 @@
-<!DOCTYPE html>
+<!Doctype html>
 <html>
-	<head>
-		<title></title>
-	</head>
-	<body>
-		<h1>Saucy Jack</h1>
-	</body>
+    <head>
+        <title></title>
+        <style type="text/css">
+            html {
+                height: 100%;
+            }
+
+            body {
+                background: silver;
+                color: #333;
+                text-align: center;
+                height: 100%;
+            }
+
+            #wrap {
+                min-height: 100%;
+            }
+
+            h2 {
+                margin: 0;
+                padding-top: 200px;
+                line-height: 1.4;
+            }
+
+            section {
+                height: 600px;
+                box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
+                background: #ddd;
+                padding: 1em 2em;
+                margin: 2em;
+                -webkit-transition: opacity 0.1s ease-out, -webkit-transform 0.3s ease-out;
+                transition: opacity 0.1s ease-out, -webkit-transform 0.3s ease-out;
+                transition: transform 0.3s ease-out, opacity 0.1s ease-out;
+                transition: transform 0.3s ease-out, opacity 0.1s ease-out, -webkit-transform 0.3s ease-out;
+                -webkit-transform: translateY(200px);
+                transform: translateY(200px);
+                will-change: transform;
+                opacity: 0.2;
+            }
+            section.saucy-active {
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+                opacity: 1;
+            }
+            section:nth-child(odd) {
+                background-color: #2233ff;
+                color: #eee;
+            }
+
+            .saucy-debug {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 0px;
+                border-top: 2px dashed red;
+                z-index: 999999;
+                opacity: 0.2;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <h1>Scroll position detection & triggering module</h1>
+            
+            <!-- 
+                TODO: put the transitioning cards *inside* the .saucy-el 
+                containers so that we don't have to worry about the y-transforms
+                affecting the values from getBoundingClientRect().
+            -->
+            
+            <section class="saucy-el">
+                <h2>Tracking the bounding rectangle of some elements...</h2>
+            </section>
+            
+            <section class="saucy-el">
+                <h2>...and checking it against a given Y on the viewport...</h2>
+            </section>
+            
+            <section class="saucy-el">
+                <h2>...so we can do something when the top edge of an element...</h2>
+            </section>
+            
+            <section class="saucy-el">
+                <h2>...intersects an imaginary 'trigger line'...</h2>
+            </section>
+            
+            <section class="saucy-el">
+                <h2>...such as adding or removing a CSS class...</h2>
+            </section>
+            
+            <section class="saucy-el">
+                <h2>...and all in a hopefully performant and non-scrolljacky way.</h2>
+            </section>
+        </div>
+
+        <script type="text/javascript" src="/scripts/build/build.js"></script>
+    </body>
 </html>
