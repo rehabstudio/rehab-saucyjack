@@ -16,7 +16,8 @@ export class SaucyJack {
             TRIGGER_LINE_POS: 0.85,
             ENTITY_SELECTOR: '.saucy-el',
             ACTIVE_CLASS: 'saucy-active',
-            INVERT_BEHAVIOUR: false
+            INVERT_BEHAVIOUR: false,
+            TRIGGER_POS: 'top'
         };
 
         // Checking if the passed 'options' param is an object. If its not then set it to the defaults.
@@ -26,6 +27,8 @@ export class SaucyJack {
             options.ENTITY_SELECTOR = options.ENTITY_SELECTOR ? options.ENTITY_SELECTOR : defaults.ENTITY_SELECTOR;
             options.ACTIVE_CLASS = options.ACTIVE_CLASS ? options.ACTIVE_CLASS : defaults.ACTIVE_CLASS;
             options.INVERT_BEHAVIOUR = options.INVERT_BEHAVIOUR ? options.INVERT_BEHAVIOUR : defaults.INVERT_BEHAVIOUR;
+            options.TRIGGER_POS = options.TRIGGER_POS ? options.TRIGGER_POS : defaults.TRIGGER_POS;
+
         } else {
             options = defaults;
         }
@@ -57,12 +60,18 @@ export class SaucyJack {
         window.addEventListener('scroll', this._onScroll.bind(this), false);
     }
 
-    // Get the top edge positions of the entities on the page.
-    // NICETOHAVE: allow for triggering from the center or bottom edge of the el,
-    // not just from the top.
+    // Get the triggered (top, bottom, center) edge positions of the entities on the page.
     _updateEntities() {
+        var triggerPos = this.options.TRIGGER_POS;
+
         this._entities.forEach(function(ent) {
-            ent.yTop = ent.el.getBoundingClientRect().top;
+            var boundingClient = ent.el.getBoundingClientRect();
+
+            if (triggerPos === 'center') {
+                ent.yTop = boundingClient.top + boundingClient.height * 0.5;
+            } else {
+                ent.yTop = boundingClient[triggerPos];
+            }
 
             // TODO: check if element is 'in range' and ignore if it isn't
 
