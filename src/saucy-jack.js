@@ -68,7 +68,7 @@ export class SaucyJack {
             var boundingClient = ent.el.getBoundingClientRect();
 
             if (triggerPos === 'center') {
-                ent.yTop = boundingClient.top + boundingClient.height / 2;
+                ent.yTop = boundingClient.top + boundingClient.height * 0.5;
             } else {
                 ent.yTop = boundingClient[triggerPos];
             }
