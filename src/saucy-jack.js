@@ -53,6 +53,15 @@ export class SaucyJack {
             this._debugEl = document.createElement('div');
             this._debugEl.classList.add('saucy-debug');
             document.body.appendChild(this._debugEl);
+
+            this._debugEl.style.position = 'fixed';
+            this._debugEl.style.left = '0';
+            this._debugEl.style.width = '100%';
+            this._debugEl.style.height = '0px';
+            this._debugEl.style.borderTop = '2px dashed red';
+            this._debugEl.style.zIndex = '999999';
+            this._debugEl.style.opacity = '0.2';
+
             this._updateDebugEl();
         }
 
