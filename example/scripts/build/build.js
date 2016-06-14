@@ -36,12 +36,9 @@ var SaucyJack = exports.SaucyJack = function () {
 
         // Checking if the passed 'options' param is an object. If its not then set it to the defaults.
         if (options instanceof Object || !(options instanceof Array)) {
-            options.DEBUG = options.DEBUG ? options.DEBUG : defaults.DEBUG;
-            options.TRIGGER_LINE_POS = options.TRIGGER_LINE_POS ? options.TRIGGER_LINE_POS : defaults.TRIGGER_LINE_POS;
-            options.ENTITY_SELECTOR = options.ENTITY_SELECTOR ? options.ENTITY_SELECTOR : defaults.ENTITY_SELECTOR;
-            options.ACTIVE_CLASS = options.ACTIVE_CLASS ? options.ACTIVE_CLASS : defaults.ACTIVE_CLASS;
-            options.INVERT_BEHAVIOUR = options.INVERT_BEHAVIOUR ? options.INVERT_BEHAVIOUR : defaults.INVERT_BEHAVIOUR;
-            options.TRIGGER_POS = options.TRIGGER_POS ? options.TRIGGER_POS : defaults.TRIGGER_POS;
+            for (var key in defaults) {
+                options[key] = options[key] ? options[key] : defaults[key];
+            }
         } else {
             options = defaults;
         }
@@ -62,10 +59,26 @@ var SaucyJack = exports.SaucyJack = function () {
         this._updateTriggerLine();
         this._updateEntities();
 
+        // Set the debug line if DEBUG is set true
+        var debugStyle = {
+            'position': 'fixed',
+            'left': '0',
+            'width': '100%',
+            'height': '0px',
+            'borderTop': '2px dashed red',
+            'zIndex': '999999',
+            'opacity': '0.2'
+        };
+
         if (this.options.DEBUG) {
             this._debugEl = document.createElement('div');
             this._debugEl.classList.add('saucy-debug');
             document.body.appendChild(this._debugEl);
+
+            for (var prop in debugStyle) {
+                this._debugEl.style[prop] = debugStyle[prop];
+            }
+
             this._updateDebugEl();
         }
 
