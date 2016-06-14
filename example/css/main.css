@@ -1,0 +1,195 @@
+html {
+    height: 100%;
+}
+
+body {
+    background: #79c5ce;
+    color: darkgrey;
+    height: 100%;
+    text-align: center;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+}
+
+#main-container {
+    margin: 0 auto;
+}
+
+h1 {
+    color: #ffffff;
+}
+
+section {
+    height: 600px;
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
+    padding: 1em 2em;
+    margin: 2em;
+}
+
+.header {
+    background: #E87E70;
+    color: #ffffff;
+    -webkit-transition: opacity 0.1s ease-out, -webkit-transform 0.3s ease-out;
+    transition: opacity 0.1s ease-out, -webkit-transform 0.3s ease-out;
+    transition: transform 0.3s ease-out, opacity 0.1s ease-out;
+    transition: transform 0.3s ease-out, opacity 0.1s ease-out, -webkit-transform 0.3s ease-out;
+    -webkit-transform: translateY(200px);
+    transform: translateY(200px);
+    will-change: transform;
+    opacity: 0.2;
+}
+
+.header.saucy-active {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.header h2 {
+    padding-top: 14rem;
+    text-align: center;
+}
+
+.header span {
+    display: block;
+    font-size: 2rem;
+    text-align: center;
+    opacity: 0;
+    will-change: opacity;
+}
+
+.header.saucy-active > span:nth-of-type(1n) {
+    opacity: 1;
+}
+
+.header span:nth-of-type(1) {
+    transition: all 0.5s;
+}
+
+.header span:nth-of-type(2) {
+    transition: all 0.5s 0.5s;
+}
+
+.header span:nth-of-type(3) {
+    transition: all 0.5s 1s;
+}
+
+.header span:nth-of-type(4) {
+    transition: all 0.5s 1.5s;
+}
+
+.header span:nth-of-type(5) {
+    transition: all 0.5s 2s;
+}
+
+.header span:nth-of-type(6) {
+    transition: all 0.5s 2.5s;
+}
+
+.slider {
+    color: #ffffff;
+    background: #79c5ce;
+    text-align: center;
+    opacity: 1;
+    will-change: transform;
+}
+
+.text-box-container {
+    text-align: center;
+    background: #ffffff;
+}
+
+
+.fading-text {
+    max-width: 425px;
+    margin: 0 auto;
+    border: 1px #fff solid;
+    transition: opacity 1s ease-in;
+}
+
+.fading-text span:nth-of-type(1n) {
+    display: block;
+    margin-top: 22%;
+    opacity: 0;
+    transition: opacity 1s ease-in;
+}
+
+.fading-text span:nth-of-type(1n).saucy-active {
+    opacity: 1;
+}
+
+.rolling-animation {
+    display: block;
+    height: auto;
+    text-align: center;
+    background: #ffffff;
+}
+
+.rolling-animation div:nth-of-type(1n) {
+    display: inline-block;
+    margin: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transform: translateX(-100rem);
+}
+
+.circle1 {
+    background: lightskyblue;
+    transition: all 1.3s 1s;
+}
+
+.circle2 {
+    background: salmon;
+    transition: all 1.3s 0.5s;
+}
+
+.circle3 {
+    background: khaki;
+    transition: all 1.3s;
+}
+
+.rolling-animation.saucy-active > div:nth-of-type(1n) {
+    transform: translateX(0);
+}
+
+.slider h2 {
+    padding: 14rem;
+    text-align: center;
+    line-height: 1.8;
+}
+
+.slider.saucy-active > .move-left {
+    transform: translateX(-45rem);
+}
+
+.slider.saucy-active > .move-right {
+    transform: translateX(45rem);
+}
+
+.slider > div:nth-of-type(odd) {
+    display: block;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background: #ffffff;
+    transform: translateX(0);
+    transition: transform 0.5s ease-out;
+}
+
+.move-left {
+    right: 0;
+    left: 0;
+    top: 0;
+    -webkit-clip-path: polygon(0 0, 100% 0%, 100% 0, 0% 100%);
+    clip-path: polygon(0 0, 100% 0%, 100% 0, 0% 100%);
+}
+
+.move-right {
+    right: 0;
+    left: 0;
+    bottom: 0;
+    -webkit-clip-path: polygon(100% 0, 100% 0%, 100% 100%, 0% 100%);
+    clip-path: polygon(100% 0, 100% 0%, 100% 100%, 0% 100%);
+}

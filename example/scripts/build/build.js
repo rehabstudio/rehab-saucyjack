@@ -200,5 +200,7 @@ var SaucyJack = exports.SaucyJack = function () {
 },{}],2:[function(require,module,exports){
 var SaucyJack = require('../../../dist/build.js');
 
-var saucyJack = new SaucyJack.SaucyJack({DEBUG: true});
+var saucyJack = new SaucyJack.SaucyJack({
+    DEBUG: true
+});
 },{"../../../dist/build.js":1}]},{},[2]);
